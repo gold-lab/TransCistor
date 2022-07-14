@@ -1,0 +1,25 @@
+#GENCODE annotation matrix with ENTREZ
+Gencode GTF was downloaded (v38 for human, vM25 for mouse)
+Run "grep -w gene gencode.v38.basic.annotation.gtf | gawk '{gsub(/;|"/,"");gsub("\\..*","", $10);print $1"\t"$4"\t"$5"\t"$7"\t"$10"\t"$14"\t"$12}' > gencode.v38.genes.txt" to create the starting point of the matrix.
+Run create_Gencode_reference_matrix.R to generate final matrices
+
+#TAD files
+Downloaded hg38 and mm9 TAD files from here: http://3dgenome.fsm.northwestern.edu/publications.html, https://doi.org/10.1186/s13059-018-1519-9. mm9 TADs were lifted over to mm10.
+Info for datasets in datasets.info.txt
+Files were renamed to species.celltype.txt format for easier reading from TransCistor.
+
+#Fantom datasets
+https://fantom.gsc.riken.jp/6/datafiles/Core_FANTOM6/RELEASE_latest/analysis/DEGs/00_all/ updated on 2021-02-25 18:46
+lftp -e 'mirror -c .' https://fantom.gsc.riken.jp/6/datafiles/Core_FANTOM6/RELEASE_latest/analysis/DEGs/00_all/
+for f in $(find . -name '*DE_gene_results_annot_DESeq2.tsv'); do echo $f; cp $f RawFiles/;done
+rename 's/_DE_gene_results_annot_DESeq2.tsv/.txt/g' *
+
+tranformed in Regulation files with adj.pvalue < 0.05 threshold.
+
+for f in *tsv; do echo $f;cat $f | gawk '{if($6!=""){print $0}}' | grep ENSG | gawk '{if(($6 < 0.05)&&($4 > 0)){print $1"\t1"}else if(($6 < 0.05)&&($4 <0)){print $1"\t-1"}else{print $1"\t0"}}' > "postprocessed/"$f; done
+
+#Fantom metadata
+We have 370 experiments (340 targets, 28 controls and 2 untreated). I run script Data/Fantom/fantom_metadata.R to get the information in the FANTOM_metadata.txt file.
+I filter our 31 protein coding genes and 19 don't have a matching ENSG id. So finally we get 
+
+ 
