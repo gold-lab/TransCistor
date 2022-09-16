@@ -1,22 +1,6 @@
 TransCistor <- function(input.file, id.type, species, cell = "H1-NPC",
                         lncRNA.name, lncRNA.chr, lncRNA.tss, lncRNA.strand = "+",
                         enricher.threshold = 0, simulations = 1000 ){
-  
-  #to do
-  #1. remake gencode matrix to be sure and to make it more clean -> done
-  #2. re-download tad to have a correct link -> done
-  #3. add toupper for mouse -> done
-  #4. add plots in the script -> done
-  #5. increase number of iterations for distance -> done
-  #6. run with all data -> done
-  #7. update webserver with new version -> ongoing
-  #8. add available cell types for TADs - error message -> adapted
-  #9. use all TADs and harmonic mean -> done
-  #10. remove protein coding filter -> done
-  #11. output bed(graph) file with proximal targets
-  #12. visualize multiple TADs, maybe density
-  #13. make github repo -> ongoing
-  
 
   library(rlang)
   library(dplyr)
@@ -31,16 +15,6 @@ TransCistor <- function(input.file, id.type, species, cell = "H1-NPC",
   options(scipen = 999)
   `%!in%` = Negate(`%in%`)
   
-  #TEST PARAMS - REMOVE WHEN DONE#######
-  #input.file = "UMLILO.txt"
-  #id.type="ensembl"
-  #species="human"
-  #enricher.threshold = 0
-  #lncRNA.chr <- "chr4"
-  #lncRNA.tss <- 73710302
-  #input.file <- read.table(input.file, sep="\t")
-  #simulations = 1000
-  #cell = "H1-NPC"
   
   #############################
   #   Input/Reference files   #
@@ -120,33 +94,6 @@ TransCistor <- function(input.file, id.type, species, cell = "H1-NPC",
       Pvalues))
   }
   
-  #secondary target filtering
-  # TFs <- read.gmt("References/TF_Perturbations_Followed_by_Expression.txt")
-  # TFs <- TFs[which(grepl(toupper(species), TFs$term)),]
-  # if(length(which(df.raw.targets$SYMBOL %in% TFs$gene)) > 0){
-  #   TFs <- enricher(df.raw.targets$SYMBOL, TERM2GENE = TFs, qvalueCutoff = enricher.threshold,
-  #                   minGSSize = 1, maxGSSize = 5000, universe = df.raw$SYMBOL)
-  #   
-  #   if(nrow(TFs) > 0){
-  #     Enriched.TFs <- data.frame(TFs=sapply(strsplit(TFs$ID, " "), "[", 1), targets = TFs$geneID)
-  #     Enriched.TFs.DE <- Enriched.TFs[which(Enriched.TFs$TFs %in% df.raw.targets$SYMBOL),]
-  #     if(nrow(Enriched.TFs.DE) > 0){
-  #       Secondary.Targets = paste(Enriched.TFs.DE$targets, collapse="/")
-  #       Secondary.Targets = unique(strsplit(Secondary.Targets, split="/")[[1]])
-  #       df.raw.targets.filtered <- filter(df.raw.targets, SYMBOL %!in% Secondary.Targets)
-  #       print(paste("Filtered", length(Secondary.Targets), "secondary targets"))
-  #     }else{
-  #       print("No secondary targets filtered.")
-  #       df.raw.targets.filtered <- df.raw.targets
-  #     }
-  #   }else{
-  #     print("No secondary targets filtered.")
-  #     df.raw.targets.filtered <- df.raw.targets
-  #   }
-  # }else{
-  #   print("No secondary targets filtered.")
-  #   df.raw.targets.filtered <- df.raw.targets
-  # }
   
   df.raw.targets.filtered <- df.raw.targets
   Pvalues <- data.frame(TAD.Activator = 1, TAD.Repressor = 1,
