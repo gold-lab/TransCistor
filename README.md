@@ -24,14 +24,14 @@ TransCistor is built as a webserver (https://transcistor.unibe.ch/) or standalon
 ``` 
 source("transcistor.R")
 TransCistor(input.file, 			#input regulation file
-			id.type, 				#gene id type: ENSEMBL, SYMBOL or ENTREZ
-			species, 				#human or mouse
-            lncRNA.name, 			#only used for visualization purposes
-			lncRNA.chr,  			#chromosome in chr1, chr2, ... format
-			lncRNA.tss, 			#IMPORTANT: hg38 or mm10 coordinates	
-			lncRNA.strand = "+",	#only used for visualization purposes
-            enricher.threshold = 0, #currently not used.
-			simulations = 1000 		#analogue number of simulations. 
+	id.type, 				#gene id type: ENSEMBL, SYMBOL or ENTREZ
+	species, 				#human or mouse
+        lncRNA.name,	 			#only used for visualization purposes
+	lncRNA.chr,	  			#chromosome in chr1, chr2, ... format
+	lncRNA.tss, 				#IMPORTANT: hg38 or mm10 coordinates	
+	lncRNA.strand = "+",			#only used for visualization purposes
+        enricher.threshold = 0, 		#currently not used.
+	simulations = 1000	 		#analogue number of simulations. 
 			)
 ```
 
@@ -40,15 +40,15 @@ The results is a list of 8 data frames. The most important ones are [[4]] and [[
 
 ``` 
 df <- read.file("UMLILO.txt", sep="\t", header = F)
-results <- TransCistor(input.file = df, 			#input regulation file
-              id.type = "ENSEMBL", 				#gene id type: ENSEMBL, SYMBOL or ENTREZ
-              species = "human", 				#human or mouse
-              lncRNA.name = "UMLILO", 			#only used for visualization purposes
-              lncRNA.chr = "chr4",  			#chromosome in chr1, chr2, ... format
-              lncRNA.tss =  73710302, 			#IMPORTANT: hg38 or mm10 coordinates	
-              lncRNA.strand = "+",	#only used for visualization purposes
-              enricher.threshold = 0, #currently not used.
-              simulations = 1000 		#analogue number of simulations. 
+results <- TransCistor(input.file = df, 			
+              id.type = "ENSEMBL", 				
+              species = "human", 				
+              lncRNA.name = "UMLILO", 			
+              lncRNA.chr = "chr4",  			
+              lncRNA.tss =  73710302, 				
+              lncRNA.strand = "+",	
+              enricher.threshold = 0, 
+              simulations = 1000 		 
   )
 
 ```
@@ -62,7 +62,7 @@ Main contributors names and contact info. (more people have contributed in this 
 Panagiotis Chouvardas, panagiotis.chouvardas@dbmr.unibe.ch
 Rory Johnson, rory.johnson@dbmr.unibe.ch
 
-###Session Info
+### Session Info
 
 ```
 R version 4.1.2 (2021-11-01)
