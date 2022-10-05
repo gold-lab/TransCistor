@@ -13,12 +13,12 @@ TransCistor-analogue, defines a distance statistic as the mean TSS-to-TSS distan
 
 TransCistor is built as a webserver (https://transcistor.unibe.ch/) or standalone script.
 * The webserver is a shiny app and has no dependencies.
-* The standalone version is built in R and the main dependencies are R packages: tidyverse, dplyr, rlang, rlist.
+* The standalone version is built in R and the main dependencies are R packages: tidyverse, dplyr, rlang, rlist, etc.
 
 
 ### Executing/Installing TransCistor
 
-* For single-case studies we highly recomend to use the webserver version of TransCistor (https://transcistor.unibe.ch/). 
+* For single-case studies we highly recommend to use the webserver version of TransCistor (https://transcistor.unibe.ch/). 
 * Standalone version is recommended for analysing multiple datasets. Executing simply requires "sourcing" the TransCistor R script.
 
 ``` 
@@ -32,7 +32,7 @@ TransCistor(input.file, 			#input regulation file
 	lncRNA.strand = "+",			#only used for visualization purposes
         enricher.threshold = 0, 		#currently not used.
 	simulations = 1000	 		#analogue number of simulations. 
-			)
+	)
 ```
 
 An example regulation file is provided (UMLILO.txt). You may perform the analysis as shown below. It should take a few seconds in a normal computer. \
@@ -49,17 +49,17 @@ results <- TransCistor(input.file = df,
               lncRNA.strand = "+",	
               enricher.threshold = 0, 
               simulations = 1000 		 
-  )
+  	      )
 
 ```
 
 ...or visit the webserver to get publucation ready figures!
 
-## Authors
+## Main contributors' names and contact info. 
 
-Main contributors names and contact info. (more people have contributed in this work, see https://www.biorxiv.org/content/10.1101/2022.09.18.508380v1)
+(more people have contributed in this work, see https://www.biorxiv.org/content/10.1101/2022.09.18.508380v1)
 
-Panagiotis Chouvardas, panagiotis.chouvardas@dbmr.unibe.ch
+Panagiotis Chouvardas, panagiotis.chouvardas@dbmr.unibe.ch\
 Rory Johnson, rory.johnson@dbmr.unibe.ch
 
 ### Session Info
