@@ -36,7 +36,7 @@ TransCistor(input.file, 			#input regulation file
 ```
 
 An example regulation file is provided (UMLILO.txt). You may perform the analysis as shown below. It should take a few seconds in a normal computer. \
-The results is a list of 8 data frames. The most important ones are [[4]] and [[9]] which included the final pvalues and the list of genes in the same TAD.
+The results is a list of 8 data frames. The most important ones are [[4]] and [[9]] which include the final pvalues and the list of genes in the same TAD.
 
 ``` 
 df <- read.file("UMLILO.txt", sep="\t", header = F)
