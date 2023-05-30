@@ -8,7 +8,6 @@ library(readxl)
 library(ggrepel)
 library(tidyverse)
 library(hash)
-setwd('./Documents/TC_Core_Files-20230118T104358Z-001/git/TransCistor-main/')
 data_path <- paste0('RegulationFiles/')
 
 metadata_file <- 'metadata.txt'
